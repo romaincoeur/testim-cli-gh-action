@@ -1,5 +1,8 @@
 FROM testim/docker-cli:latest
 
-COPY entrypoint.sh /entrypoint.sh
+WORKDIR /opt/testim-runner
 
-ENTRYPOINT ["/entrypoint.sh"]
+COPY entrypoint.sh entrypoint.sh
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT ["/opt/testim-runner/entrypoint.sh"]

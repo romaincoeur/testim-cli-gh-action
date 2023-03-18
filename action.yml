@@ -5,13 +5,16 @@ inputs:
   token:  # id of input
     description: 'Testim auth token'
     required: true
-  project-id:
+  project:
     description: 'Project ID'
     required: true
   grid:
     description: 'Grid to run the tests on'
     required: true
     default: "Testim-Grid"
+  suite:
+    description: 'The test suite to execute'
+    required: false
   base-url:
     description: 'The URL of the app to test'
     required: false
@@ -23,7 +26,8 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.token }}
-    - ${{ inputs.project-id }}
+    - ${{ inputs.project }}
     - ${{ inputs.grid }}
+    - ${{ inputs.suite }}
     - ${{ inputs.base-url }}
     - ${{ inputs.retries }}
